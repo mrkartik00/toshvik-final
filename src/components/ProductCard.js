@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const CardWrapper = styled(Link)` 
-  text-decoration: none; 
-  color: ${({ theme }) => theme.text}; 
-  display: block; 
+const CardWrapper = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.text};
+  display: block;
   background-color: ${({ theme }) => theme.cardBackground};
   border-radius: 10px;
   overflow: hidden;
@@ -62,7 +62,11 @@ const ProductCard = ({ product }) => {
       <div className="card-content">
         <h3>{product.name}</h3>
         <p>{product.description.substring(0, 100)}...</p>
-        <p className="Quantity">{product.quantity}kg</p>
+        <p className="Quantity">
+          {Array.isArray(product.quantity)
+            ? product.quantity.map(q => `${q}kg`).join(', ')
+            : `${product.quantity}kg`}
+        </p>
         {product.isNewLaunch && <span className="new-tag">New!</span>}
       </div>
     </CardWrapper>
@@ -70,3 +74,4 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+

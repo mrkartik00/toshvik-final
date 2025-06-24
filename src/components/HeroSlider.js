@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const slidesData = [
   {
     type: 'image',
-    src: '../assets/images/hero1.png', 
+    src: '../assets/images/hero1.png',
     alt: 'Fresh Atta Banner',
     title: 'Toshvik Atta',
     subtitle: 'Freshness in Every Grain. The Taste of Tradition.',
@@ -21,19 +21,18 @@ const slidesData = [
     buttonText: 'Learn More',
     buttonLink: '/about',
   },
-
   {
     type: 'image',
-    src: 'https://www.chefswarehouse.com/siteassets/king-arthur-flour_1440.png?format=jpg&quality=90&w=1140&mode=crop', 
+    src: 'https://www.chefswarehouse.com/siteassets/king-arthur-flour_1440.png?format=jpg&quality=90&w=1140&mode=crop',
     alt: 'Healthy Recipes',
     title: 'Delicious & Healthy',
     subtitle: 'Discover recipes made with Toshvik Atta.',
     buttonText: 'Find Recipes',
     buttonLink: '/recipes',
   },
-    {
+  {
     type: 'youtube',
-    videoId: 'niuSRcuPcgw', 
+    videoId: 'niuSRcuPcgw',
     title: 'Watch Our Story',
     subtitle: 'See how Toshvik Atta is made with care.',
   },
@@ -42,9 +41,9 @@ const slidesData = [
 const SliderWrapper = styled.section`
   position: relative;
   width: 100%;
-  height: 60vh; /* Adjust height as needed */
+  height: 60vh;
   overflow: hidden;
-  background-color: #e0e0e0; /* Fallback background */
+  background-color: #e0e0e0;
 
   @media (max-width: 768px) {
     height: 50vh;
@@ -73,7 +72,7 @@ const Slide = styled.div`
   }
 
   &.video-slide {
-    background-color: #000; /* Black background for video */
+    background-color: #000;
   }
 `;
 
@@ -87,7 +86,8 @@ const SlideImageBackground = styled.div`
   background-size: cover;
   background-position: center;
   z-index: 1;
-  &::after { /* Dark overlay for better text readability */
+
+  &::after {
     content: '';
     position: absolute;
     top: 0;
@@ -101,14 +101,14 @@ const SlideImageBackground = styled.div`
 const SlideContent = styled.div`
   position: relative;
   z-index: 2;
-  color: white; /* Default for image slides */
-  
+  color: white;
+
   h1 {
     font-size: 2.8rem;
     margin-bottom: 1rem;
-    color: white; /* Ensure hero H1 is white */
+    color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    font-family: 'Arial Black', Gadget, sans-serif; /* Changed font style for heading */
+    font-family: 'Arial Black', Gadget, sans-serif;
   }
 
   p {
@@ -116,7 +116,7 @@ const SlideContent = styled.div`
     margin-bottom: 2rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
     max-width: 600px;
-    font-family: 'Georgia', serif; /* Changed font style for subtitle */
+    font-family: 'Georgia', serif;
   }
 
   @media (max-width: 768px) {
@@ -135,17 +135,13 @@ const SlideContent = styled.div`
 `;
 
 const YouTubeEmbed = styled.iframe`
-  width: 80%; /* Adjust as needed */
-  max-width: 800px;
-  height: 80%; /* Adjust as needed */
-  max-height: 450px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: none;
-  z-index: 2;
-
-  @media (max-width: 768px) {
-    width: 95%;
-    height: 60%;
-  }
+  z-index: 1;
 `;
 
 const NavButton = styled.button`
@@ -182,33 +178,32 @@ const NavButton = styled.button`
 `;
 
 const DotsContainer = styled.div`
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    z-index: 3;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 3;
 `;
 
 const Dot = styled.button`
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: none;
-    background-color: ${props => props.active ? 'var(--primary-color)' : 'rgba(255, 255, 255, 0.5)'};
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: ${props => props.active ? 'var(--primary-color)' : 'rgba(255, 255, 255, 0.5)'};
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-        background-color: ${props => props.active ? 'var(--primary-color)' : 'rgba(255, 255, 255, 0.8)'};
-    }
+  &:hover {
+    background-color: ${props => props.active ? 'var(--primary-color)' : 'rgba(255, 255, 255, 0.8)'};
+  }
 `;
-
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const autoPlayInterval = 3000; // 7 seconds for images, video will pause it
+  const autoPlayInterval = 3000;
 
   const nextSlide = useCallback(() => {
     setCurrentSlide(prev => (prev === slidesData.length - 1 ? 0 : prev + 1));
@@ -227,9 +222,7 @@ const HeroSlider = () => {
       const timer = setTimeout(nextSlide, autoPlayInterval);
       return () => clearTimeout(timer);
     }
-    // No auto-play for video slides to avoid interrupting playback
   }, [currentSlide, nextSlide]);
-
 
   return (
     <SliderWrapper>
@@ -250,14 +243,14 @@ const HeroSlider = () => {
           {slide.type === 'youtube' && (
             <>
               <YouTubeEmbed
-                src={`https://www.youtube.com/embed/${slide.videoId}?autoplay=0&modestbranding=1&rel=0`}
+                src={`https://www.youtube.com/embed/${slide.videoId}?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0`}
                 title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
-               <SlideContent style={{ position: 'absolute', bottom: '5%', color: '#ccc' }}> {/* For video title/subtitle */}
-                  {slide.title && <h2 style={{fontSize: '1.5rem', color: '#ddd'}}>{slide.title}</h2>}
-                  {slide.subtitle && <p style={{fontSize: '1rem', color: '#bbb'}}>{slide.subtitle}</p>}
+              <SlideContent style={{ position: 'absolute', bottom: '5%', color: '#ccc' }}>
+                {slide.title && <h2 style={{ fontSize: '1.5rem', color: '#ddd' }}>{slide.title}</h2>}
+                {slide.subtitle && <p style={{ fontSize: '1rem', color: '#bbb' }}>{slide.subtitle}</p>}
               </SlideContent>
             </>
           )}
@@ -267,7 +260,7 @@ const HeroSlider = () => {
       <NavButton className="next" onClick={nextSlide}>❯</NavButton>
       <DotsContainer>
         {slidesData.map((_, index) => (
-            <Dot key={index} active={index === currentSlide} onClick={() => goToSlide(index)} />
+          <Dot key={index} active={index === currentSlide} onClick={() => goToSlide(index)} />
         ))}
       </DotsContainer>
     </SliderWrapper>
