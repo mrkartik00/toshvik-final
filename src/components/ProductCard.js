@@ -62,10 +62,12 @@ const ProductCard = ({ product }) => {
       <div className="card-content">
         <h3>{product.name}</h3>
         <p>{product.description.substring(0, 100)}...</p>
-        <p className="Quantity">
-          {Array.isArray(product.quantity)
-            ? product.quantity.map(q => `${q}kg`).join(', ')
-            : `${product.quantity}kg`}
+         <p className="Quantity">
+          <strong>
+            {Array.isArray(product.quantity)
+              ? product.quantity.map(q => `${q}kg`).join(', ')
+              : `${product.quantity}kg`}
+          </strong>
         </p>
         {product.isNewLaunch && <span className="new-tag">New!</span>}
       </div>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { productsData } from '../data/products';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import styled from "styled-components";
+import { productsData } from "../data/products";
 
 const PageWrapper = styled.div`
   .container {
@@ -11,7 +11,7 @@ const PageWrapper = styled.div`
     background-color: ${({ theme }) => theme.cardBackground};
     color: ${({ theme }) => theme.text};
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   @media (max-width: 768px) {
     .container {
@@ -38,7 +38,9 @@ const ProductHeader = styled.div`
     display: inline-block;
   }
   @media (max-width: 768px) {
-    h1 { font-size: 1.8rem; }
+    h1 {
+      font-size: 1.8rem;
+    }
     margin-bottom: 1.5rem;
   }
 `;
@@ -58,7 +60,7 @@ const ProductImage = styled.img`
   width: 100%;
   max-width: 350px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   object-fit: cover;
   margin: 0 auto;
   @media (max-width: 768px) {
@@ -88,9 +90,15 @@ const ProductInfo = styled.div`
     margin-bottom: 1.2rem;
   }
   @media (max-width: 768px) {
-    p { font-size: 0.9rem; }
-    h2 { font-size: 1.2rem; }
-    .price { font-size: 1.4rem; }
+    p {
+      font-size: 0.9rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    .price {
+      font-size: 1.4rem;
+    }
   }
 `;
 
@@ -109,7 +117,8 @@ const InfoSection = styled.div`
     border-collapse: collapse;
     margin-top: 0.5rem;
     font-size: 0.9rem;
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 8px;
       border-bottom: 1px solid #eee;
@@ -144,21 +153,25 @@ const BackLink = styled(Link)`
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
-  const product = productsData.find(p => p._id === productId);
+  const product = productsData.find((p) => p._id === productId);
 
   if (!product) {
     return (
-        <PageWrapper className="container">
-            <h1 className="text-center">Product Not Found</h1>
-            <p className="text-center">The product you are looking for does not exist.</p>
-            <div className="text-center">
-                <BackLink to="/products">Back to Products</BackLink>
-            </div>
-        </PageWrapper>
+      <PageWrapper className="container">
+        <h1 className="text-center">Product Not Found</h1>
+        <p className="text-center">
+          The product you are looking for does not exist.
+        </p>
+        <div className="text-center">
+          <BackLink to="/products">Back to Products</BackLink>
+        </div>
+      </PageWrapper>
     );
   }
 
-  const imageSrc = product.imageUrl.startsWith('http') ? product.imageUrl : process.env.PUBLIC_URL + product.imageUrl;
+  const imageSrc = product.imageUrl.startsWith("http")
+    ? product.imageUrl
+    : process.env.PUBLIC_URL + product.imageUrl;
 
   return (
     <PageWrapper>
@@ -172,12 +185,19 @@ const ProductDetailPage = () => {
           <ProductImage src={imageSrc} alt={product.name} />
           <ProductInfo>
             <p>{product.description}</p>
-            
+            <p>
+              <strong>
+                {Array.isArray(product.quantity)
+                  ? product.quantity.map((q) => `${q}kg`).join(", ")
+                  : `${product.quantity}kg`}
+              </strong>
+            </p>
+
             {product.detailedDescription && (
-                <InfoSection>
-                    <h2>Product Details</h2>
-                    <p>{product.detailedDescription}</p>
-                </InfoSection>
+              <InfoSection>
+                <h2>Product Details</h2>
+                <p>{product.detailedDescription}</p>
+              </InfoSection>
             )}
 
             {product.ingredients && product.ingredients.length > 0 && (
@@ -214,10 +234,10 @@ const ProductDetailPage = () => {
             )}
 
             {product.storageInstructions && (
-                <InfoSection>
-                    <h2>Storage Instructions</h2>
-                    <p>{product.storageInstructions}</p>
-                </InfoSection>
+              <InfoSection>
+                <h2>Storage Instructions</h2>
+                <p>{product.storageInstructions}</p>
+              </InfoSection>
             )}
 
             <BackLink to="/products">← Back to All Products</BackLink>
