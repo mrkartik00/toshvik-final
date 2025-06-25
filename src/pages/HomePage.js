@@ -55,6 +55,7 @@ const Section = styled.section`
 
   @media (max-width: 768px) {
     padding: 30px 0;
+
     h2 {
       font-size: 1.6rem;
       margin-bottom: 20px;
@@ -88,12 +89,22 @@ const HomePage = () => {
       <Section bg={theme.background === '#ffffff' ? '#f0f0f0' : theme.background}>
         <div className="container text-center">
           <h2>Why Choose Toshvik?</h2>
-          <p style={{ fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto 20px auto' }}>
+          <p
+            style={{
+              fontSize: '1.1rem',
+              maxWidth: '800px',
+              margin: '0 auto 20px auto',
+            }}
+          >
             At Toshvik, we believe in purity, quality, and the rich heritage of Indian food. Our atta is made from the finest grains, processed with care to retain its natural goodness.
           </p>
-          <a href="/about" className="btn btn-secondary">
-            Learn More About Us
-          </a>
+
+          {/* ✅ Centered Button */}
+          <div style={{ textAlign: 'center' }}>
+            <a href="/about" className="btn btn-secondary">
+              Learn More About Us
+            </a>
+          </div>
         </div>
       </Section>
     </>
