@@ -15,3 +15,4 @@ export const darkTheme = {
   primary: '#f97316',         // slightly brighter orange for dark mode
   secondary: '#fcd34d',
 };
+

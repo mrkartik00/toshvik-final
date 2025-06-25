@@ -98,6 +98,139 @@ const AboutContainer = styled.div`
     }
   }
 `;
+const StyledProcessSection = styled.section`
+  background-color: ${({ theme }) => theme.cardBackground};
+  padding: 5rem 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: ${({ theme }) => theme.primary};
+  }
+
+  p.subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    color: ${({ theme }) => theme.subtitleText};
+  }
+
+  .line {
+    display: none;
+    @media (min-width: 768px) {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: rgba(244, 143, 177, 0.2);
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+  }
+
+  .timeline {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 2rem;
+
+      &.reverse {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .icon-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 9999px;
+    background-color: ${({ theme }) => theme.stepBackground};
+    color: ${({ theme }) => theme.stepText};
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .icon-desktop {
+    display: none;
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: ${({ theme }) => theme.stepBackground};
+      color: ${({ theme }) => theme.stepText};
+      border-radius: 9999px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      z-index: 10;
+      margin: 0 auto;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .text-box {
+    flex: 1;
+    max-width: 450px;
+
+    h3 {
+      font-size: 1.5rem;
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      color: ${({ theme }) => theme.primary};
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: ${({ theme }) => theme.subtitleText};
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
+  }
+`;
+
+/*
 
 const StyledProcessSection = styled.section`
   background-color: #fff9ed;
@@ -229,7 +362,7 @@ const StyledProcessSection = styled.section`
     }
   }
 `;
-
+*/
 const processSteps = [
   {
     step: 1,
