@@ -7,7 +7,7 @@ export const recipesData = [
     prepTime: "15 mins",
     cookTime: "10 mins",
     servings: "8-10 rotis",
-    imageUrl: "/assets/images/recipe-default.jpg",
+    imageUrl: "/assets/images/chapati.jpg",
     category: "Breads",
     difficulty: "Easy",
     ingredients: [
@@ -45,7 +45,7 @@ export const recipesData = [
     prepTime: "20 mins (plus 30 mins resting)",
     cookTime: "15-20 mins",
     servings: "12-15 pooris",
-    imageUrl: "/assets/images/recipe-default.jpg",
+    imageUrl: "/assets/images/poori.jpg",
     category: "Breads",
     difficulty: "Medium",
     ingredients: [
@@ -83,7 +83,7 @@ export const recipesData = [
   prepTime: "10 mins",
   cookTime: "15 mins",
   servings: "6-8 pancakes",
-  imageUrl: "/assets/images/recipe-default.jpg",
+  imageUrl: "/assets/images/banana-pancake.jpg",
   category: "Breakfast",
   difficulty: "Easy",
   ingredients: [
@@ -119,7 +119,7 @@ export const recipesData = [
     prepTime: "20 mins",
     cookTime: "15 mins",
     servings: "6-8 rotis",
-    imageUrl: "/assets/images/recipe-default.jpg",
+    imageUrl: "/assets/images/beetrootroti.jpg",
     category: "Breads",
     difficulty: "Easy",
     ingredients: [
@@ -150,7 +150,7 @@ export const recipesData = [
     prepTime: "25 mins",
     cookTime: "20 mins",
     servings: "4 parathas",
-    imageUrl: "/assets/images/recipe-default.jpg",
+    imageUrl: "/assets/images/alooprantha.jpg",
     category: "Breads",
     difficulty: "Medium",
     ingredients: [
@@ -184,7 +184,7 @@ export const recipesData = [
   prepTime: "15 mins (+30 mins chilling)",
   cookTime: "12-15 mins",
   servings: "15-18 cookies",
-  imageUrl: "/assets/images/recipe-default.jpg",
+  imageUrl: "/assets/images/biscuit.jpg",
   category: "Dessert",
   difficulty: "Easy",
   ingredients: [
