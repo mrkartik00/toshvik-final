@@ -80,7 +80,6 @@ const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
-
   div {
     animation: ${fadeInUp} 0.5s ease forwards;
     animation-delay: 0.2s;

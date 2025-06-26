@@ -1,14 +1,31 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled, { useTheme,keyframes } from 'styled-components';
 import { productsData } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import HeroSlider from '../components/HeroSlider';
+
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 
 const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 160px;
-  padding: 30px 70px;  
+   div {
+    animation: ${fadeInUp} 0.5s ease forwards;
+    animation-delay: 0.2s;
+    padding: 30px 70px;  
+  }
   margin-top: 20px;
   @media (max-width: 600px) {
     grid-template-columns: 1fr; /* Stack on very small screens */
