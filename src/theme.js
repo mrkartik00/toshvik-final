@@ -1,4 +1,5 @@
 export const lightTheme = {
+  mode: 'light', // ✅ Add this
   background: '#fff8f0',
   text: '#333333',
   navBackground: '#ffffff',
@@ -8,6 +9,7 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
+  mode: 'dark', // ✅ Add this
   background: '#1e1e1e',
   text: '#e5e5e5',
   navBackground: '#121212',
@@ -15,4 +17,3 @@ export const darkTheme = {
   primary: '#f97316',         // slightly brighter orange for dark mode
   secondary: '#fcd34d',
 };
-

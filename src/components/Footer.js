@@ -1,9 +1,16 @@
 import React from "react";
-import styled from "styled-components";
-import { FaFacebook, FaInstagram, FaXTwitter, FaYoutube, FaLinkedin } from "react-icons/fa6";
+import styled, { useTheme } from "styled-components";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaXTwitter,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa6";
 
 const FooterContainer = styled.footer`
-  background: ${({ theme }) => theme.navBackground};
+  background: ${({ theme }) =>
+    theme.mode === "light" ? "#ffffff" : "#000000"}; // 💡 Full black in dark mode
   color: ${({ theme }) => theme.text};
   text-align: center;
   padding: 2rem 0;
@@ -32,10 +39,24 @@ const FooterContainer = styled.footer`
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 0.6rem;
-
+    margin-top: 1rem; /* ⬅️ Slight margin only */
+    margin-bottom: 1rem; /* ⬅️ Reduce space before logo */
+    
     a {
       font-size: 1.7rem;
+    }
+  }
+
+  .certification-combined {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      transition: filter 0.3s ease;
     }
   }
 
@@ -49,14 +70,26 @@ const FooterContainer = styled.footer`
     .icon-links a {
       font-size: 1.1rem;
     }
+
+    .certification-combined img {
+      height: 45px;
+    }
   }
 `;
 
 const Footer = () => {
+  const theme = useTheme();
+  const isLight = theme.mode === "light";
+
+  const certificationLogo = isLight
+    ? "/assets/images/certifications/combined-light.jpg"
+    : "/assets/images/certifications/combined-dark.jpg";
+
   return (
     <FooterContainer>
       <div className="container">
         <p>Follow us on below social media platforms for regular update</p>
+
         <div className="icon-links">
           <a
             href="https://www.facebook.com/share/19QtJPP98s/?mibextid=qi2Omg"
@@ -99,9 +132,16 @@ const Footer = () => {
             <FaLinkedin />
           </a>
         </div>
-      </div>
-              <p>© {new Date().getFullYear()} Toshvik Atta. All Rights Reserved.</p>
 
+        <div className="certification-combined">
+          <img
+            src={certificationLogo}
+            alt="FSSAI, ISO 9001:2015, HACCP Certified"
+          />
+        </div>
+      </div>
+
+      <p>© {new Date().getFullYear()} Toshvik Atta. All Rights Reserved.</p>
     </FooterContainer>
   );
 };
