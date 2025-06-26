@@ -15,7 +15,7 @@ const fadeInUp = keyframes`
   }
 `;
 
-// Theme-based Page Background
+// Page Wrapper
 const PageWrapper = styled.div`
   min-height: 100vh;
   background: ${({ theme }) => theme.background};
@@ -30,7 +30,7 @@ const Container = styled.div`
   margin: auto;
 `;
 
-// Filters
+// Filter Controls
 const FilterControls = styled.div`
   background-color: ${({ theme }) => theme.navBackground};
   color: ${({ theme }) => theme.text};
@@ -75,15 +75,22 @@ const FilterControls = styled.div`
   }
 `;
 
-// Grid
+// Grid - Match RecipeCard styles
 const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  animation: ${fadeInUp} 0.6s ease;
+  gap: 25px;
+
+  div {
+    animation: ${fadeInUp} 0.5s ease forwards;
+    animation-delay: 0.2s;
+    padding: 30px 70px;  
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-// Title
 const SectionTitle = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.heading || theme.text};
@@ -158,8 +165,10 @@ const ProductsPage = () => {
 
         {filteredAndSortedProducts.length > 0 ? (
           <ProductsGrid>
-            {filteredAndSortedProducts.map(product => (
-              <ProductCard key={product._id} product={product} />
+            {filteredAndSortedProducts.map((product, index) => (
+              <div style={{ animationDelay: `${index * 0.1}s` }} key={product._id}>
+                <ProductCard product={product} />
+              </div>
             ))}
           </ProductsGrid>
         ) : (

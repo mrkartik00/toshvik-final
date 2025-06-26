@@ -7,11 +7,13 @@ import HeroSlider from '../components/HeroSlider';
 const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 160px;
+  padding: 30px 70px;  
   margin-top: 20px;
   @media (max-width: 600px) {
     grid-template-columns: 1fr; /* Stack on very small screens */
   }
+    
 `;
 
 const Section = styled.section`
