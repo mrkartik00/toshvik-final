@@ -2,6 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+// Outer container to add spacing from left/right
+const CardContainer = styled.div`
+  padding: 0 10px;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
+`;
+
 const CardWrapper = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.text};
@@ -9,18 +18,23 @@ const CardWrapper = styled(Link)`
   background-color: ${({ theme }) => theme.cardBackground};
   border-radius: 10px;
   overflow: hidden;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
 
   img {
     width: 100%;
-    height: 600px;
+    max-height: 400px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
   }
 
   .card-content {
     padding: 1rem;
-    color: ${({ theme }) => theme.text};
 
     h3 {
       margin: 0 0 0.5rem 0;
@@ -40,13 +54,14 @@ const CardWrapper = styled(Link)`
       margin-top: 10px;
     }
 
-    .Quantity {
+    .quantity {
       font-size: 0.95rem;
     }
 
     .new-tag {
       color: red;
       font-weight: bold;
+      font-size: 0.9rem;
     }
   }
 `;
@@ -57,23 +72,24 @@ const ProductCard = ({ product }) => {
     : process.env.PUBLIC_URL + product.imageUrl;
 
   return (
-    <CardWrapper to={`/products/${product._id}`}>
-      <img src={imageSrc} alt={product.name} />
-      <div className="card-content">
-        <h3>{product.name}</h3>
-        <p>{product.description.substring(0, 100)}...</p>
-         <p className="Quantity">
-          <strong>
-            {Array.isArray(product.quantity)
-              ? product.quantity.map(q => `${q}kg`).join(', ')
-              : `${product.quantity}kg`}
-          </strong>
-        </p>
-        {product.isNewLaunch && <span className="new-tag">New!</span>}
-      </div>
-    </CardWrapper>
+    <CardContainer>
+      <CardWrapper to={`/products/${product._id}`}>
+        <img src={imageSrc} alt={product.name} />
+        <div className="card-content">
+          <h3>{product.name}</h3>
+          <p>{product.description.substring(0, 100)}...</p>
+          <p className="quantity">
+            <strong>
+              {Array.isArray(product.quantity)
+                ? product.quantity.map(q => `${q}kg`).join(', ')
+                : `${product.quantity}kg`}
+            </strong>
+          </p>
+          {product.isNewLaunch && <span className="new-tag">New!</span>}
+        </div>
+      </CardWrapper>
+    </CardContainer>
   );
 };
 
 export default ProductCard;
-

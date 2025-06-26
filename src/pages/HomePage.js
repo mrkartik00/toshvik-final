@@ -16,22 +16,37 @@ const fadeInUp = keyframes`
   }
 `;
 
-
 const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 160px;
-   div {
+  gap: 40px; /* Reasonable spacing between items */
+  margin-top: 20px;
+
+  > div {
     animation: ${fadeInUp} 0.5s ease forwards;
     animation-delay: 0.2s;
-    padding: 30px 70px;  
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
   }
-  margin-top: 20px;
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr; /* Stack on very small screens */
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+
+    > div {
+      padding: 16px;
+    }
   }
-    
+
+  @media (max-width: 480px) {
+    gap: 25px;
+
+    > div {
+      padding: 12px;
+    }
+  }
 `;
+
 
 const Section = styled.section`
   padding: 40px 0;

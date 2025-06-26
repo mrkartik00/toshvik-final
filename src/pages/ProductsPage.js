@@ -75,18 +75,24 @@ const FilterControls = styled.div`
   }
 `;
 
-// Grid - Match RecipeCard styles
 const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
-  div {
+
+  > div {
     animation: ${fadeInUp} 0.5s ease forwards;
     animation-delay: 0.2s;
-    padding: 30px 70px;  
+    padding: 20px 20px;  // Reduced horizontal padding for better fit
+    box-sizing: border-box;
   }
-  @media (max-width: 600px) {
+
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
+
+    > div {
+      padding: 16px; // More compact padding on small screens
+    }
   }
 `;
 
